@@ -6,5 +6,7 @@ A basic Python program to check Cybersecurity & Infrastructure Security Agency (
 
 ## Requirements
 - Python 3
+- requests
+- pandas
 
 
