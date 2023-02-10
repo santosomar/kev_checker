@@ -27,10 +27,16 @@ df = pd.read_csv("known_exploited_vulnerabilities.csv")
 # Get the column names
 column_names = df.columns
 
-# print("Field names:", column_names)
-
 # Convert the dateAdded field to a datetime object
 df["dateAdded"] = pd.to_datetime(df["dateAdded"])
+
+# Make a copy of the original case of the columns
+df_original_case = df.copy()
+
+# Make the columns case-insensitive
+df["cveID"] = df["cveID"].str.lower()
+df["vendorProject"] = df["vendorProject"].str.lower()
+df["product"] = df["product"].str.lower()
 
 # Use argparse to parse the command line arguments
 parser = argparse.ArgumentParser(description='Retrieve and process CISA KEV data.')
@@ -39,8 +45,8 @@ parser.add_argument('search', type=str, help='The search term to use. Can be a c
 
 args = parser.parse_args()
 
-# Get the search term from the arguments
-search_input = args.search
+# Get the search term from the arguments and make it case-insensitive
+search_input = args.search.lower()
 
 # Split the input into two parts, separated by a colon
 search_input_parts = search_input.split(":")
@@ -55,8 +61,14 @@ if len(search_input_parts) == 2:
     filtered_df = df[(df["dateAdded"] >= start_date) & (df["dateAdded"] <= end_date)]
 
 else:
-    # Filter the DataFrame to only include rows where the cveID, vendorProject, or product matches the input
-    filtered_df = df[(df["cveID"] == search_input) | (df["vendorProject"] == search_input) | (df["product"] == search_input)]
+    # Filter the DataFrame to only include rows where the cveID, vendorProject, or product contains the input
+    filtered_df = df[(df["cveID"] == search_input) | (df["vendorProject"] == search_input) | (df["product"].str.contains(search_input))]
 
-# Print the filtered records
-print(filtered_df[["cveID", "vendorProject", "product", "dateAdded"]])
+# Get the original case of the filtered records
+filtered_df_original_case = df_original_case.loc[filtered_df.index]
+
+# Set the display option to show all rows
+pd.options.display.max_rows = None
+
+# Print the filtered records with the original case
+print(filtered_df_original_case[["cveID", "vendorProject", "product"]])
