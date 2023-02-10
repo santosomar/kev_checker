@@ -9,14 +9,18 @@ This tool retrieves and processes the latest CISA's Known Exploited Vulnerabilit
 - requests
 - argparse
 
+```
+pip install -r requirements.txt
+```
+
 ## Usage
 ```
 python3 kev_checker.py <search>
 ```
 `<search>` can be either:
-- a cveID
-- vendorProject
-- product
+- a CVE ID in the format "CVE-YYYY-NNNNN"
+- a vendor or open source project
+- a product name (keyword search)
 - or a date range in the format "YYYY-MM-DD:YYYY-MM-DD".
 
 All input is case insensitive.    
