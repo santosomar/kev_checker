@@ -1,7 +1,7 @@
 ![Python versions](https://img.shields.io/pypi/pyversions/danger-python)
 
 # KEV Checker
-his script retrieves and processes the Known Exploited Vulnerabilities (KEV) data from the CISA website. The data is stored in a CSV file and is processed using the pandas library.
+This tool retrieves and processes the latest CISA's Known Exploited Vulnerabilities (KEV) data. The data is stored in a CSV file and is processed using the `pandas` library.
 
 ## Requirements
 - Python 3
