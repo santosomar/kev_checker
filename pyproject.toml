@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "kev_checker"
 authors = [
-    {name = "Omar Santos"},
+    {name = "Omar Santos, Charles Ezell III"},
 ]
 description = "A basic Python program to check Cybersecurity & Infrastructure Security Agency (CISA) Known Exploited Vulnerabilities (KEV) Catalog"
 readme = "README.md"
