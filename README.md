@@ -3,19 +3,29 @@
 # KEV Checker
 This tool retrieves and processes the latest CISA's Known Exploited Vulnerabilities (KEV) data. The data is stored in a CSV file and is processed using the `pandas` library.
 
-## Requirements
+## Main Requirements
 - Python 3
 - pandas
 - requests
 - argparse
 
+## Installation
+
 ```
-pip install -r requirements.txt
+pip3 install --upgrade git+https://github.com/santosomar/kev_checker
+```
+
+### Make an editable install if you want to make changes/enhancements to the code
+
+```
+git clone https://github.com/santosomar/kev_checker
+cd kev_checker
+pip3 install --upgrade -e .
 ```
 
 ## Usage
 ```
-python3 kev_checker.py <search>
+kev-checker <search>
 ```
 `<search>` can be either:
 - a CVE ID in the format "CVE-YYYY-NNNNN"
@@ -32,7 +42,7 @@ All input is case insensitive.
 This command will retrieve and process the KEV data, and output all records that have a "cveID" field that matches "CVE-2023-21674".
 
 ```
-python3 kev_checker.py CVE-2023-21674
+kev-checker CVE-2023-21674
 ```
 
 Output:
@@ -45,7 +55,7 @@ Output:
 This command will retrieve and process the KEV data, and output all records that have a "vendorProject" field that matches "Microsoft".
 
 ```
-python3 kev_checker.py openssl
+kev-checker openssl
 ```
 
 Output:
@@ -58,7 +68,7 @@ Output:
 This command will retrieve and process the KEV data, and output all records that have a "product" field that matches "Cisco IOS XR products".
 
 ```
-python3 kev_checker.py "IOS XR"
+kev-checker "IOS XR"
 ```
 
 Output:
@@ -75,7 +85,7 @@ Output:
 ### Time Range
 This command will retrieve and process the KEV data, and output all records that have a "dateAdded" field within the range of January 1, 2023 to December 31, 2023.
 ```
-python3 kev_checker.py 2023-01-01:2023-12-31
+kev-checker 2023-01-01:2023-12-31
 ```
 
 Output:
