@@ -13,7 +13,11 @@ his script retrieves and processes the Known Exploited Vulnerabilities (KEV) dat
 ```
 python3 kev_checker.py <search>
 ```
-`<search>` can be either a cveID, vendorProject, product, or a time range in the format "YYYY-MM-DD:YYYY-MM-DD".
+`<search>` can be either:
+- a cveID
+- vendorProject
+- product
+- or a date range in the format "YYYY-MM-DD:YYYY-MM-DD".
 
 All input is case insensitive.    
 
