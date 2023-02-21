@@ -12,7 +12,7 @@ This tool retrieves and processes the latest CISA's Known Exploited Vulnerabilit
 ## Installation
 
 ```
-pip3 install --upgrade git+https://github.com/santosomar/kev_checker
+pip3 install kev-checker
 ```
 
 ### Make an editable install if you want to make changes/enhancements to the code
